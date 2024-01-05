@@ -83,7 +83,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     containerColor = Color(0xFF7493A1), // Background color of the button
                     contentColor = Color.White // Color of the text and icons
                 ),
-                shape = RoundedCornerShape(8.dp) // More boxed shape
+                shape = RoundedCornerShape(10.dp) // More boxed shape
             ) {
                 Text("Login")
             }
@@ -94,8 +94,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         )
 
     }
-
-
 
 
 

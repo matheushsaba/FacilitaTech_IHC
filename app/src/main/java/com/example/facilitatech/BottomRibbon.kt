@@ -29,7 +29,8 @@ fun BottomRibbon(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(backgroundColor),
+            .background(backgroundColor)
+            .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(
