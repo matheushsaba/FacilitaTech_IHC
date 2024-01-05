@@ -90,7 +90,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         }
         BottomRibbon(
             text = "HelpingHand",
-            iconId = R.drawable.sum_icon, // Replace with your actual icon resource ID
+            iconId = R.drawable.baseline_handshake_24, // Replace with your actual icon resource ID
         )
 
     }
