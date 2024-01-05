@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="300px"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Sum two numbers"
+        android:gravity="center_horizontal"
+        android:textFontWeight="800"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="First Number:" />
+    <EditText
+        android:id="@+id/firstNumberEditText"
+        android:layout_width="400px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Second Number:"
+        />
+    <EditText
+        android:id="@+id/secondNumberEditText"
+        android:layout_width="400px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
+    <android.widget.Button
+        android:id="@+id/sumButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:text="SUM"
+        />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>

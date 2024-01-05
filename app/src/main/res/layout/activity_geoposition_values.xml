@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="300px"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Geoposition Values"
+        android:gravity="center_horizontal"
+        android:textFontWeight="800"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:rowCount="1"
+        android:columnCount="3"
+        >
+
+        <!-- First Column -->
+        <Space
+            android:layout_columnWeight="1"
+            />
+
+        <!-- Second Column -->
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:rowCount="2"
+            android:columnCount="2"
+            android:layout_column="1"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:textFontWeight="800"
+                android:text="Latitude: " />
+
+            <TextView
+                android:id="@+id/tv_latitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_row="0"
+                android:layout_column="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:textFontWeight="800"
+                android:text="Longitude: " />
+
+            <TextView
+                android:id="@+id/tv_longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_row="1"
+                android:layout_column="1"
+                />
+        </GridLayout>
+
+        <!-- Third Column -->
+        <Space
+            android:layout_columnWeight="1"
+            />
+
+
+    </GridLayout>
+
+
+
+</LinearLayout>
