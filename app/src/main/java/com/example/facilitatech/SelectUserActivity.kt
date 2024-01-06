@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.facilitatech.components.BottomRibbon
+import com.example.facilitatech.components.WaitPage
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
 class SelectUserActivity : ComponentActivity() {
@@ -71,7 +72,7 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
             verticalArrangement = Arrangement.Center
         ) {
             User(
-                iconId = R.drawable.send_message_icon, // Replace with your actual icon drawable resource
+                iconId = R.drawable.teacher_2_, // Replace with your actual icon drawable resource
                 buttonText = "Sou um ajudante",
                 onButtonClick = { onNavigate(1) }
             )
@@ -79,7 +80,7 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
             Spacer(modifier = Modifier.height(32.dp)) // This spacer adds a blank space between the users
 
             User(
-                iconId = R.drawable.send_message_icon, // Replace with your actual icon drawable resource
+                iconId = R.drawable.why_quest, // Replace with your actual icon drawable resource
                 buttonText = "Preciso de ajuda",
                 onButtonClick = { onNavigate(2) }
             )
@@ -90,6 +91,7 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
             iconId = R.drawable.baseline_handshake_24,
             modifier = Modifier.align(Alignment.BottomCenter) // This aligns the BottomRibbon to the bottom center
         )
+
     }
 }
 
