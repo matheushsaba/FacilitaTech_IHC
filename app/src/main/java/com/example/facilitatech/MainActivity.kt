@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
     private fun navigateToNextScreen() {
         // Navigate to the next screen. Replace `NextActivity::class.java` with the actual class
-        val intent = Intent(this, TouchValueActivity::class.java)
+        val intent = Intent(this, SelectUserActivity::class.java)
         startActivity(intent)
     }
 }
@@ -48,55 +48,56 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        TextField(
-            value = username,
-            onValueChange = { username = it },
-            label = { Text("Username") }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        TextField(
-            value = password,
-            onValueChange = { password = it },
-            label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation()
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        if (isLoading) {
-            CircularProgressIndicator()
-        } else {
-            Button(onClick = {
-                isLoading = true
-                // Simulate a delay for loading
-                Handler(Looper.getMainLooper()).postDelayed({
-                    isLoading = false
-                    onLoginSuccess()
-                }, 2000) // 2 seconds delay
-            },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF7493A1), // Background color of the button
-                    contentColor = Color.White // Color of the text and icons
-                ),
-                shape = RoundedCornerShape(10.dp) // More boxed shape
-            ) {
-                Text("Login")
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.Center), // This aligns the Column to the center of the Box
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            TextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text("Username") }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                visualTransformation = PasswordVisualTransformation()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            if (isLoading) {
+                CircularProgressIndicator()
+            } else {
+                Button(
+                    onClick = {
+                        isLoading = true
+                        // Simulate a delay for loading
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            isLoading = false
+                            onLoginSuccess()
+                        }, 2000) // 2 seconds delay
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF7493A1),
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Text("Login")
+                }
             }
         }
+
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24, // Replace with your actual icon resource ID
+            modifier = Modifier.align(Alignment.BottomCenter)
         )
-
     }
-
-
-
 }
 
 @Preview(showBackground = true, name = "Login Screen Preview")

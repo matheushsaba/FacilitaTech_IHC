@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.facilitatech.LoginScreen
 import com.example.facilitatech.R
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
@@ -23,11 +22,13 @@ import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 fun BottomRibbon(
     text: String,
     iconId: Int,
-    backgroundColor: Color = Color(0xFF7493A1), // Default color for the ribbon
-    contentColor: Color = Color.White // Default color for text and icon
+    modifier: Modifier = Modifier, // Accept the modifier parameter
+    backgroundColor: Color = Color(0xFF7493A1),
+    contentColor: Color = Color.White
 ) {
+    // Apply the passed modifier to the outermost Box
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(backgroundColor)
             .padding(16.dp),
@@ -50,6 +51,7 @@ fun BottomRibbon(
         }
     }
 }
+
 @Preview(showBackground = true, name = "Login Screen Preview")
 @Composable
 fun PreviewLoginScreen() {
