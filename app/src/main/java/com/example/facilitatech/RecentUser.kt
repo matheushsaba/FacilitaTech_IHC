@@ -1,10 +1,16 @@
 package com.example.facilitatech.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,49 +28,39 @@ import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
 
 @Composable
-fun BottomRibbon(
-    text: String,
-    iconId: Int,
-    modifier: Modifier = Modifier, // Accept the modifier parameter
-    backgroundColor: Color = Color(0xFF7493A1),
-    contentColor: Color = Color.White
-) {
-    // Apply the passed modifier to the outermost Box
-    Box(
-        modifier = modifier
+fun RecentUser(name: String, onButtonClick: () -> Unit) {
+    Button(
+        onClick = onButtonClick,
+        modifier = Modifier
             .fillMaxWidth()
-            .background(backgroundColor)
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
+            .height(50.dp),
+        shape = RoundedCornerShape(16.dp), // Adjust as needed to match design
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1))
     ) {
         Row(
-            modifier = Modifier.padding(vertical = 2.dp, horizontal = 0.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 2.dp), // Padding from the start (left side)
+            horizontalArrangement = Arrangement.Start, // Align text to the start (left)
+            verticalAlignment = Alignment.CenterVertically // Center text vertically
         ) {
             Text(
-                text = text,
-                color = contentColor,
-                modifier = Modifier.padding(end = 8.dp),
+                text = name,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = Color.White,
-                    fontWeight = FontWeight.Light, // Make text bold
+                    fontWeight = FontWeight.Bold, // Make text bold
                     fontSize = 22.sp // Set text size
                 )
             )
-            Icon(
-                painter = painterResource(id = iconId),
-                contentDescription = "$text Icon",
-                tint = contentColor
-            )
         }
     }
+    Spacer(modifier = Modifier.height(6.dp)) // Space between buttons
 }
 
 @Preview()
 @Composable
-fun PreviewLoginScreen() {
+fun PreviewRecentUserScreen() {
     AndroidToolsetTheme {
-        BottomRibbon(text = "HelpingHand",
-            iconId = R.drawable.baseline_handshake_24)
+        RecentUser(name = "Analice Ferreira", onButtonClick = { })
     }
 }

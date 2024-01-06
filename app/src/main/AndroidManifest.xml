@@ -21,13 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SumActivity"/>
-        <activity android:name=".SendMessageActivity"/>
-        <activity android:name=".ShowReceivedMessageActivity"/>
-        <activity android:name=".AccelerometerValuesActivity"/>
-        <activity android:name=".LuminosityValueActivity"/>
+        <activity android:name=".SelectUserActivity"/>
+        <activity android:name=".HelperHomeActivity"/>
+        <activity android:name=".HelpSeekerHomeActivity"/>
         <activity android:name=".TouchValueActivity"/>
-        <activity android:name=".GeopositionActivity"/>
     </application>
 
 </manifest>
