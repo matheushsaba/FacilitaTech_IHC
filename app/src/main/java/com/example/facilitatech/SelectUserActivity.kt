@@ -50,12 +50,12 @@ class SelectUserActivity : ComponentActivity() {
     }
 
     private fun navigateToHelperActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+        val intent = Intent(this, HelperHomeActivity::class.java)
         startActivity(intent)
     }
 
     private fun navigateToHelpSeekerActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+        val intent = Intent(this, HelpSeekerHomeActivity::class.java)
         startActivity(intent)
     }
 }
