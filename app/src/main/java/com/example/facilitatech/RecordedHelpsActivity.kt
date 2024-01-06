@@ -38,14 +38,15 @@ import androidx.compose.ui.unit.sp
 import com.example.facilitatech.components.ActionButton
 import com.example.facilitatech.components.BottomRibbon
 import com.example.facilitatech.components.RecentUser
+import com.example.facilitatech.components.RecordingButton
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
-class HelperHomeActivity : ComponentActivity() {
+class RecordedHelpsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { userType ->
+                RecordingsScreen { userType ->
                     when (userType) {
                         1 -> navigateToHelperActivity()
                         2 -> navigateToHelpSeekerActivity()
@@ -65,54 +66,21 @@ class HelperHomeActivity : ComponentActivity() {
         startActivity(intent)
     }
 
-    fun shareText(text: String) {
-        val shareIntent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, text)
-            type = "text/plain"
-        }
-        startActivity(Intent.createChooser(shareIntent, null))
-    }
 }
 
 @Composable
-fun HelperScreen(onNavigate: (Int) -> Unit) {
+fun RecordingsScreen(onNavigate: (Int) -> Unit) {
     val context = LocalContext.current
     val activity = context as? HelperHomeActivity  // Cast context to your activity
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Box(
-            modifier = Modifier
-                .weight(1f) // This Box will take up the space available minus the space the bottom part takes
-                .padding(16.dp)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                // Conditionally add ActionButtons based on your logic
-                ActionButton(
-                    text = "Enviar link para uma nova ajuda",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
-                    onButtonClick = {
-                        activity?.shareText("This is the text I want to share.")
-                    }
-                )
-                ActionButton(
-                    text = "Ver ajudas gravadas",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
-                    onButtonClick = { onNavigate(2) }
-                )
-            }
-        }
-
         Column(
             modifier = Modifier
                 .weight(2f) // This Column will take the remaining space
                 .padding(16.dp)
         ) {
             Text(
-                text = "Recentes:",
+                text = "Gravações:",
                 style = MaterialTheme.typography.titleLarge.copy(
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
@@ -121,15 +89,25 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                 modifier = Modifier.padding(horizontal = 0.dp, vertical = 8.dp)
             )
 
-            // List of recent users inside a LazyColumn
-            LazyColumn(
-                modifier = Modifier
-                    .weight(1f) // Take up all available space
-            ) {
-                // Replace this list with your actual data source
-                val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
-                items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+            // Replace with your actual data
+            val recordings = listOf(
+                Triple("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023"),
+                Triple("Chamar Uber", "Mateus Oliveira", "02/11/2023"),
+                Triple("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023"),
+                Triple("Pagar boleto", "Beatriz Santos", "13/04/2023"),
+                Triple("Ver filme na Netflix", "Beatriz Santos", "13/04/2023"),
+            )
+
+            LazyColumn {
+                items(recordings) { (recordingName, helperName, date) ->
+                    RecordingButton(
+                        recordingName = recordingName,
+                        helperName = helperName,
+                        date = date,
+                        iconId = R.drawable.send_message_icon, // Replace with actual icon id
+                        onButtonClick = { }
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }
@@ -144,9 +122,9 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewHelperHomeScreen() {
+fun PreviewRecordingsScreen() {
     AndroidToolsetTheme {
         // Provide a no-op lambda for the preview
-        HelperScreen(onNavigate = {})
+        RecordingsScreen(onNavigate = {})
     }
 }
