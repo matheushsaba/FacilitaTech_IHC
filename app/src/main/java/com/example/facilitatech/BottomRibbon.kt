@@ -12,7 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.facilitatech.LoginScreen
+import com.example.facilitatech.R
+import com.example.facilitatech.ui.theme.AndroidToolsetTheme
+
 
 @Composable
 fun BottomRibbon(
@@ -24,7 +29,8 @@ fun BottomRibbon(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(backgroundColor),
+            .background(backgroundColor)
+            .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(
@@ -42,5 +48,13 @@ fun BottomRibbon(
                 tint = contentColor
             )
         }
+    }
+}
+@Preview(showBackground = true, name = "Login Screen Preview")
+@Composable
+fun PreviewLoginScreen() {
+    AndroidToolsetTheme {
+        BottomRibbon(text = "HelpingHand",
+            iconId = R.drawable.baseline_handshake_24)
     }
 }

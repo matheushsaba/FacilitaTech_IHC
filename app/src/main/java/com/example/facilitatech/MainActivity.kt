@@ -83,19 +83,17 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     containerColor = Color(0xFF7493A1), // Background color of the button
                     contentColor = Color.White // Color of the text and icons
                 ),
-                shape = RoundedCornerShape(8.dp) // More boxed shape
+                shape = RoundedCornerShape(10.dp) // More boxed shape
             ) {
                 Text("Login")
             }
         }
         BottomRibbon(
             text = "HelpingHand",
-            iconId = R.drawable.sum_icon, // Replace with your actual icon resource ID
+            iconId = R.drawable.baseline_handshake_24, // Replace with your actual icon resource ID
         )
 
     }
-
-
 
 
 
