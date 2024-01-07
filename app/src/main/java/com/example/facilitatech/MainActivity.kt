@@ -80,7 +80,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                         Handler(Looper.getMainLooper()).postDelayed({
                             isLoading = false
                             onLoginSuccess()
-                        }, 2000) // 2 seconds delay
+                        }, 200) // 0.2 seconds delay
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF7493A1),

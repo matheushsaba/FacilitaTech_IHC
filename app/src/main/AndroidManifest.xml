@@ -29,6 +29,8 @@
         <activity android:name=".ConfirmRecordingActivity"/>
         <activity android:name=".NameRecordingActivity"/>
         <activity android:name=".TouchValueActivity"/>
+        <activity android:name=".SharingScreen" />
+        <activity android:name=".WaitPageActivity" />
     </application>
 
 </manifest>

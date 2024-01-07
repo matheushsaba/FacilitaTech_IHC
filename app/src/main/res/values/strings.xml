@@ -6,4 +6,5 @@
     <string name="check_luminosity">Check Luminosity</string>
     <string name="touch_coordinates">Touch Coordinates</string>
     <string name="check_geoposition">Check Geoposition</string>
+    <string name="title_activity_wait_page">WaitPageActivity</string>
 </resources>

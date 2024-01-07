@@ -36,7 +36,7 @@ class HelperHomeActivity : ComponentActivity() {
     }
 
     private fun navigateToHelperActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+        val intent = Intent(this, SharingScreen::class.java)
         startActivity(intent)
     }
 

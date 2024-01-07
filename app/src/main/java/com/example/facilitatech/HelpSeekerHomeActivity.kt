@@ -35,6 +35,10 @@ class HelpSeekerHomeActivity : ComponentActivity() {
             }
         }
 
+    private fun navigateToHelperActivity() {
+        val intent = Intent(this, WaitPageActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun navigateToHelpSeekerActivity() {
         val intent = Intent(this, ConfirmRecordingActivity::class.java)
