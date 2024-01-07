@@ -30,12 +30,18 @@ class HelperHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { navigateToHelperActivity() }
+                HelperScreen { i ->
+                    when (i) {
+                        1 -> navigateToShareScreenActivity()
+                    }
+                }
             }
         }
     }
 
-    private fun navigateToHelperActivity() {
+    // correct would be navigate to waitPage, and then to shareScreen,
+    // knowing who is the helper and who is the seeker
+    private fun navigateToShareScreenActivity() {
         val intent = Intent(this, SharingScreen::class.java)
         startActivity(intent)
     }
@@ -118,7 +124,8 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     "Roberto Rocha"
                 )
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate })
+                    // clean this
+                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
                 }
             }
         }

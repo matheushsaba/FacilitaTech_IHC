@@ -30,12 +30,19 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelpSeekerScreen { navigateToHelpSeekerActivity()}
+                // HelpSeekerScreen { navigateToWaitPageActivity() }
+                // this is not the correct way to go to the waitPage,
+                // but the way above is not working, i don't know why
+                HelpSeekerScreen { i ->
+                    when (i) {
+                        1 -> navigateToWaitPageActivity()
+                    }
                 }
             }
         }
+    }
 
-    private fun navigateToHelperActivity() {
+    private fun navigateToWaitPageActivity() {
         val intent = Intent(this, WaitPageActivity::class.java)
         startActivity(intent)
     }
@@ -116,7 +123,8 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                 // Replace this list with your actual data source
                 val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate })
+                    // this onNavigate is not working
+                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
                 }
             }
         }
