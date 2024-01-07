@@ -30,22 +30,12 @@ class HelperHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { userType ->
-                    when (userType) {
-                        1 -> navigateToHelperActivity()
-                        2 -> navigateToHelpSeekerActivity()
-                    }
-                }
+                HelperScreen { navigateToHelperActivity() }
             }
         }
     }
 
     private fun navigateToHelperActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToHelpSeekerActivity() {
         val intent = Intent(this, TouchValueActivity::class.java)
         startActivity(intent)
     }
@@ -128,7 +118,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     "Roberto Rocha"
                 )
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+                    RecentUser(name = name, onButtonClick = { onNavigate })
                 }
             }
         }

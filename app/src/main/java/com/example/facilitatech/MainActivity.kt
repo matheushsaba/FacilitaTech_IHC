@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
     private fun navigateToNextScreen() {
         // Navigate to the next screen. Replace `NextActivity::class.java` with the actual class
         val intent = Intent(this, SelectUserActivity::class.java)
+//        val intent = Intent(this, VideoPlayerActivity::class.java)
         startActivity(intent)
     }
 }

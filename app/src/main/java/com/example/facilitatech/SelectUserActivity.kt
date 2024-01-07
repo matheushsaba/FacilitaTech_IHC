@@ -32,7 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.facilitatech.components.BottomRibbon
-import com.example.facilitatech.components.WaitPage
+//import com.example.facilitatech.components.WaitPage
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
 class SelectUserActivity : ComponentActivity() {

@@ -30,23 +30,14 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelpSeekerScreen { userType ->
-                    when (userType) {
-                        1 -> navigateToHelperActivity()
-                        2 -> navigateToHelpSeekerActivity()
-                    }
+                HelpSeekerScreen { navigateToHelpSeekerActivity()}
                 }
             }
         }
-    }
 
-    private fun navigateToHelperActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
-        startActivity(intent)
-    }
 
     private fun navigateToHelpSeekerActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+        val intent = Intent(this, ConfirmRecordingActivity::class.java)
         startActivity(intent)
     }
 
@@ -121,7 +112,7 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                 // Replace this list with your actual data source
                 val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+                    RecentUser(name = name, onButtonClick = { onNavigate })
                 }
             }
         }
