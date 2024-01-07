@@ -24,6 +24,8 @@
         <activity android:name=".SelectUserActivity"/>
         <activity android:name=".HelperHomeActivity"/>
         <activity android:name=".HelpSeekerHomeActivity"/>
+        <activity android:name=".RecordedHelpsActivity"/>
+        <activity android:name=".VideoPlayerActivity"/>
         <activity android:name=".TouchValueActivity"/>
     </application>
 

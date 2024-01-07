@@ -9,10 +9,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +30,7 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { userType ->
+                HelpSeekerScreen { userType ->
                     when (userType) {
                         1 -> navigateToHelperActivity()
                         2 -> navigateToHelpSeekerActivity()
@@ -52,6 +47,11 @@ class HelpSeekerHomeActivity : ComponentActivity() {
 
     private fun navigateToHelpSeekerActivity() {
         val intent = Intent(this, TouchValueActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun navigateToRecordedHelpsActivity() {
+        val intent = Intent(this, RecordedHelpsActivity::class.java)
         startActivity(intent)
     }
 
@@ -88,6 +88,13 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                         activity?.shareText("This is the text I want to share.")
                     }
                 )
+                ActionButton(
+                    text = "Ver ajudas gravadas",
+                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
+                    onButtonClick = {
+                        activity?.navigateToRecordedHelpsActivity()
+                    }
+                )
             }
         }
 
@@ -112,26 +119,7 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                     .weight(1f) // Take up all available space
             ) {
                 // Replace this list with your actual data source
-                val recentUsers = listOf(
-                    "Analice Ferreira",
-                    "Márcio Espíndola",
-                    "Vanessa Barbosa",
-                    "Eduardo Amaral",
-                    "Gilberto Linhares",
-                    "Renato Magalhães",
-                    "Andressa Freitas",
-                    "José Souza",
-                    "Maria Oliveira",
-                    "Antônio Costa",
-                    "Teresa Santos",
-                    "João Almeida",
-                    "Francisca Silva",
-                    "Raimundo Pereira",
-                    "Sebastiana Lima",
-                    "Geraldo Ribeiro",
-                    "Lucia Carvalho",
-                    "Roberto Rocha"
-                )
+                val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
                 items(recentUsers) { name ->
                     RecentUser(name = name, onButtonClick = { onNavigate(1) })
                 }

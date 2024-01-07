@@ -1,8 +1,6 @@
 package com.example.facilitatech.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,30 +34,38 @@ fun ActionButton(text: String, iconId: Int, onButtonClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp),
-        shape = RoundedCornerShape(30.dp), // Adjust as needed to match design
+        shape = RoundedCornerShape(30.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1))
     ) {
-        Icon(
-            painter = painterResource(id = iconId),
-            contentDescription = text,
-            modifier = Modifier.size(24.dp) // Adjust size as needed
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyLarge.copy(
-                color = Color.White,
-                fontWeight = FontWeight.Bold, // Make text bold
-                fontSize = 22.sp // Set text size
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp), // Apply padding to the row instead of the icon and text
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start // This aligns the contents to the left
+        ) {
+            Icon(
+                painter = painterResource(id = iconId),
+                contentDescription = text,
+                modifier = Modifier.size(40.dp)
             )
-        )
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                )
+            )
+        }
     }
     Spacer(modifier = Modifier.height(8.dp)) // Space between buttons
 }
 
-@Preview()
+@Preview(showBackground = true)
 @Composable
-fun PreviewActionButtonScreen() {
+fun PreviewActionButton() {
     AndroidToolsetTheme {
         ActionButton(text = "Enviar link para uma nova ajuda", iconId = R.drawable.send_message_icon, onButtonClick = { })
     }
