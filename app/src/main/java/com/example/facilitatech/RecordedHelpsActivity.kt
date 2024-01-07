@@ -76,17 +76,17 @@ fun RecordingsScreen() {
 
             // Example data, replace with your actual video data
             val recordings = listOf(
-                RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.drawable.send_message_icon),
-                RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.drawable.send_message_icon),
-                RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.drawable.send_message_icon),
-                RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon),
-                RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon)
+//                RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
+//                RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.drawable.send_message_icon),
+//                RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.drawable.send_message_icon),
+//                RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon),
+//                RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon)
 
-            //        RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
-            //        RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.raw.instagram_video),
-            //        RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.raw.instagram_video),
-            //        RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.raw.instagram_video),
-            //        RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.raw.instagram_video)
+                    RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
+                    RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.raw.instagram_video),
+                    RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.raw.instagram_video),
+                    RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.raw.instagram_video),
+                    RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.raw.instagram_video)
                         )
 
             LazyColumn {

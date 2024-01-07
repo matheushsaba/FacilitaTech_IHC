@@ -57,7 +57,7 @@ fun RecordingButton(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(id = recordingInfo.videoResourceId),
+                painter = painterResource(R.drawable.send_message_icon),
                 contentDescription = recordingInfo.recordingName,
                 tint = contentColor,
                 modifier = Modifier.size(40.dp)
