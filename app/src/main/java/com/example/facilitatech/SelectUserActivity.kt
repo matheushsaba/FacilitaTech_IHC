@@ -66,29 +66,29 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .align(Alignment.Center), // Align the Column in the center of the Box
+                .align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             User(
-                iconId = R.drawable.send_message_icon, // Replace with your actual icon drawable resource
+                iconId = R.drawable.send_message_icon,
                 buttonText = "Sou um ajudante",
-                onButtonClick = { onNavigate(1) }
+                onButtonClick = { onNavigate(1) } // For "Helper" button
             )
 
-            Spacer(modifier = Modifier.height(32.dp)) // This spacer adds a blank space between the users
+            Spacer(modifier = Modifier.height(32.dp))
 
             User(
-                iconId = R.drawable.send_message_icon, // Replace with your actual icon drawable resource
+                iconId = R.drawable.send_message_icon,
                 buttonText = "Preciso de ajuda",
-                onButtonClick = { onNavigate(2) }
+                onButtonClick = { onNavigate(2) } // For "Help Seeker" button
             )
         }
 
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24,
-            modifier = Modifier.align(Alignment.BottomCenter) // This aligns the BottomRibbon to the bottom center
+            modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
 }
@@ -100,8 +100,6 @@ fun User(
     buttonText: String,  // Button text parameter
     onButtonClick: () -> Unit  // Click handler for the button
 ) {
-    var isLoading by remember { mutableStateOf(false) }
-
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -138,10 +136,7 @@ fun User(
                     color = Color(0xFF7493A1)
                 ) {
                     Button(
-                        onClick = {
-                            isLoading = true
-                            onButtonClick()  // Call the passed click handler
-                        },
+                        onClick = onButtonClick,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF7493A1), // Background color of the button
                             contentColor = Color.White // Color of the text and icons
@@ -165,10 +160,6 @@ fun User(
         }
     }
 
-    // Show loading indicator if isLoading is true
-    if (isLoading) {
-        CircularProgressIndicator()
-    }
 }
 
 

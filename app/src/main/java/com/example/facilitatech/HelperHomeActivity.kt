@@ -5,33 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
@@ -98,11 +83,6 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                         activity?.shareText("This is the text I want to share.")
                     }
                 )
-                ActionButton(
-                    text = "Ver ajudas gravadas",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
-                    onButtonClick = { onNavigate(2) }
-                )
             }
         }
 
@@ -127,7 +107,26 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     .weight(1f) // Take up all available space
             ) {
                 // Replace this list with your actual data source
-                val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
+                val recentUsers = listOf(
+                    "Analice Ferreira",
+                    "Márcio Espíndola",
+                    "Vanessa Barbosa",
+                    "Eduardo Amaral",
+                    "Gilberto Linhares",
+                    "Renato Magalhães",
+                    "Andressa Freitas",
+                    "José Souza",
+                    "Maria Oliveira",
+                    "Antônio Costa",
+                    "Teresa Santos",
+                    "João Almeida",
+                    "Francisca Silva",
+                    "Raimundo Pereira",
+                    "Sebastiana Lima",
+                    "Geraldo Ribeiro",
+                    "Lucia Carvalho",
+                    "Roberto Rocha"
+                )
                 items(recentUsers) { name ->
                     RecentUser(name = name, onButtonClick = { onNavigate(1) })
                 }

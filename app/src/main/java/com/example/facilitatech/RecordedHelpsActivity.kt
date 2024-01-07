@@ -39,6 +39,7 @@ import com.example.facilitatech.components.ActionButton
 import com.example.facilitatech.components.BottomRibbon
 import com.example.facilitatech.components.RecentUser
 import com.example.facilitatech.components.RecordingButton
+import com.example.facilitatech.components.RecordingInfo
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
 class RecordedHelpsActivity : ComponentActivity() {
@@ -46,32 +47,16 @@ class RecordedHelpsActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                RecordingsScreen { userType ->
-                    when (userType) {
-                        1 -> navigateToHelperActivity()
-                        2 -> navigateToHelpSeekerActivity()
-                    }
+                RecordingsScreen()
                 }
             }
         }
     }
 
-    private fun navigateToHelperActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToHelpSeekerActivity() {
-        val intent = Intent(this, TouchValueActivity::class.java)
-        startActivity(intent)
-    }
-
-}
 
 @Composable
-fun RecordingsScreen(onNavigate: (Int) -> Unit) {
+fun RecordingsScreen() {
     val context = LocalContext.current
-    val activity = context as? HelperHomeActivity  // Cast context to your activity
 
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -89,25 +74,34 @@ fun RecordingsScreen(onNavigate: (Int) -> Unit) {
                 modifier = Modifier.padding(horizontal = 0.dp, vertical = 8.dp)
             )
 
-            // Replace with your actual data
+            // Example data, replace with your actual video data
             val recordings = listOf(
-                Triple("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023"),
-                Triple("Chamar Uber", "Mateus Oliveira", "02/11/2023"),
-                Triple("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023"),
-                Triple("Pagar boleto", "Beatriz Santos", "13/04/2023"),
-                Triple("Ver filme na Netflix", "Beatriz Santos", "13/04/2023"),
-            )
+                RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.drawable.send_message_icon),
+                RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.drawable.send_message_icon),
+                RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.drawable.send_message_icon),
+                RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon),
+                RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon)
+
+            //        RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
+            //        RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.raw.instagram_video),
+            //        RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.raw.instagram_video),
+            //        RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.raw.instagram_video),
+            //        RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.raw.instagram_video)
+                        )
 
             LazyColumn {
-                items(recordings) { (recordingName, helperName, date) ->
+                items(recordings) { recordingInfo ->
                     RecordingButton(
-                        recordingName = recordingName,
-                        helperName = helperName,
-                        date = date,
-                        iconId = R.drawable.send_message_icon, // Replace with actual icon id
-                        onButtonClick = { }
+                        recordingInfo = recordingInfo,
+                        onButtonClick = { info ->
+                            // Start the VideoPlayerActivity and pass the video resource ID
+                            val intent = Intent(context, VideoPlayerActivity::class.java).apply {
+                                putExtra("VIDEO_RESOURCE_ID", info.videoResourceId)
+                            }
+                            context.startActivity(intent)
+                        }
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
                 }
             }
         }
@@ -118,13 +112,14 @@ fun RecordingsScreen(onNavigate: (Int) -> Unit) {
             modifier = Modifier.align(Alignment.CenterHorizontally) // Align this to the bottom of the Column
         )
     }
+
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewRecordingsScreen() {
     AndroidToolsetTheme {
-        // Provide a no-op lambda for the preview
-        RecordingsScreen(onNavigate = {})
+        RecordingsScreen()
     }
 }

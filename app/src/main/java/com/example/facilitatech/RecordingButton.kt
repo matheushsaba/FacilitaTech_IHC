@@ -1,6 +1,5 @@
 package com.example.facilitatech.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,45 +26,46 @@ import androidx.compose.ui.unit.sp
 import com.example.facilitatech.R
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
+data class RecordingInfo(
+    val recordingName: String,
+    val helperName: String,
+    val date: String,
+    val videoResourceId: Int // Assuming you identify videos by resource IDs
+)
 
 @Composable
 fun RecordingButton(
-    recordingName: String,
-    helperName: String,
-    date: String,
-    iconId: Int,
-    modifier: Modifier = Modifier, // Accept the modifier parameter
-    onButtonClick: () -> Unit
+    recordingInfo: RecordingInfo,
+    onButtonClick: (RecordingInfo) -> Unit
 ) {
-    // Fixed background and content colors
+    // Define fixed colors for the button
     val backgroundColor = Color(0xFF7493A1)
     val contentColor = Color.White
 
     Button(
-        onClick = onButtonClick,
+        onClick = { onButtonClick(recordingInfo) },
         modifier = Modifier
             .fillMaxWidth()
             .height(120.dp),
-        shape = RoundedCornerShape(16.dp), // Adjust as needed to match design
-        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1))
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor)
     ) {
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
-                .background(backgroundColor)
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(id = iconId),
-                contentDescription = "Profile Picture",
+                painter = painterResource(id = recordingInfo.videoResourceId),
+                contentDescription = recordingInfo.recordingName,
                 tint = contentColor,
                 modifier = Modifier.size(40.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(
-                    text = recordingName,
+                    text = recordingInfo.recordingName,
                     color = contentColor,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
@@ -73,7 +73,7 @@ fun RecordingButton(
                     )
                 )
                 Text(
-                    text = helperName,
+                    text = recordingInfo.helperName,
                     color = contentColor,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Normal,
@@ -81,7 +81,7 @@ fun RecordingButton(
                     )
                 )
                 Text(
-                    text = date,
+                    text = recordingInfo.date,
                     color = contentColor,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Light,
@@ -93,16 +93,19 @@ fun RecordingButton(
     }
 }
 
-@Preview()
+@Preview(showBackground = true)
 @Composable
 fun PreviewRecordingButton() {
     AndroidToolsetTheme {
         RecordingButton(
-            recordingName = "Pesquisar Instagram",
-            helperName = "Beatriz Santos",
-            date = "08/12/2023",
-            iconId = R.drawable.send_message_icon,
-            onButtonClick = { }
+            recordingInfo = RecordingInfo(
+                "Pesquisar no Instagram",
+                "Beatriz Santos",
+                "08/12/2023",
+                R.drawable.send_message_icon // Replace with an actual icon resource ID
+            ),
+            onButtonClick = {}
         )
     }
 }
+
