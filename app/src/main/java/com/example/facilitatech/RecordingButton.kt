@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,7 +47,7 @@ fun RecordingButton(
         onClick = { onButtonClick(recordingInfo) },
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp),
+            .height(130.dp),
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor)
     ) {
@@ -64,30 +65,84 @@ fun RecordingButton(
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-                Text(
-                    text = recordingInfo.recordingName,
-                    color = contentColor,
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                // ==================
+                // TÍTULO DA GRAVAÇÃO
+                // ==================
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.dot_circle_recording_icon),
+                        contentDescription = recordingInfo.recordingName,
+                        tint = contentColor,
+                        modifier = Modifier.size(20.dp)
                     )
-                )
-                Text(
-                    text = recordingInfo.helperName,
-                    color = contentColor,
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 18.sp
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = recordingInfo.recordingName,
+                        color = contentColor,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
-                )
-                Text(
-                    text = recordingInfo.date,
-                    color = contentColor,
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Light,
-                        fontSize = 16.sp
+                }
+                Spacer(modifier = Modifier.height(2.dp))
+                // ==================
+                // AJUDANTE DA GRAVAÇÃO
+                // ==================
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.user_icon),
+                        contentDescription = recordingInfo.recordingName,
+                        tint = contentColor,
+                        modifier = Modifier.size(20.dp)
                     )
-                )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = recordingInfo.helperName,
+                        color = contentColor,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 18.sp
+                        )
+                    )
+                }
+                Spacer(modifier = Modifier.height(3.dp))
+                // ==================
+                // DATA DA GRAVAÇÃO
+                // ==================
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Spacer(modifier = Modifier.width(1.dp))
+                    Icon(
+                        painter = painterResource(R.drawable.calendar_icon),
+                        contentDescription = recordingInfo.recordingName,
+                        tint = contentColor,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = recordingInfo.date,
+                        color = contentColor,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontWeight = FontWeight.Light,
+                            fontSize = 16.sp
+                        )
+                    )
+                }
+
             }
         }
     }

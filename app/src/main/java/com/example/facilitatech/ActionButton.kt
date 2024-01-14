@@ -67,6 +67,6 @@ fun ActionButton(text: String, iconId: Int, onButtonClick: () -> Unit) {
 @Composable
 fun PreviewActionButton() {
     AndroidToolsetTheme {
-        ActionButton(text = "Enviar link para uma nova ajuda", iconId = R.drawable.send_message_icon, onButtonClick = { })
+        ActionButton(text = "Enviar link para uma nova ajuda", iconId = R.drawable.share_icon, onButtonClick = { })
     }
 }

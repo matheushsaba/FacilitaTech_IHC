@@ -85,14 +85,14 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                 // Conditionally add ActionButtons based on your logic
                 ActionButton(
                     text = "Enviar convite para uma nova ajuda",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
+                    iconId = R.drawable.share_icon, // Replace with actual icon id
                     onButtonClick = {
                         activity?.shareText("This is the text I want to share.")
                     }
                 )
                 ActionButton(
                     text = "Ver ajudas gravadas",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
+                    iconId = R.drawable.saved_recordings_icon, // Replace with actual icon id
                     onButtonClick = {
                         activity?.navigateToRecordedHelpsActivity()
                     }
