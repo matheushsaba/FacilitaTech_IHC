@@ -30,9 +30,6 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                // HelpSeekerScreen { navigateToWaitPageActivity() }
-                // this is not the correct way to go to the waitPage,
-                // but the way above is not working, i don't know why
                 HelpSeekerScreen { i ->
                     when (i) {
                         1 -> navigateToWaitPageActivity()
@@ -44,11 +41,6 @@ class HelpSeekerHomeActivity : ComponentActivity() {
 
     private fun navigateToWaitPageActivity() {
         val intent = Intent(this, WaitPageActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToHelpSeekerActivity() {
-        val intent = Intent(this, ConfirmRecordingActivity::class.java)
         startActivity(intent)
     }
 
@@ -70,29 +62,28 @@ class HelpSeekerHomeActivity : ComponentActivity() {
 @Composable
 fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
     val context = LocalContext.current
-    val activity = context as? HelpSeekerHomeActivity  // Cast context to your activity
+    val activity = context as? HelpSeekerHomeActivity
 
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .weight(1f) // This Box will take up the space available minus the space the bottom part takes
+                .weight(1f)
                 .padding(16.dp)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Conditionally add ActionButtons based on your logic
                 ActionButton(
                     text = "Enviar convite para uma nova ajuda",
-                    iconId = R.drawable.share_icon, // Replace with actual icon id
+                    iconId = R.drawable.share_icon,
                     onButtonClick = {
                         activity?.shareText("This is the text I want to share.")
                     }
                 )
                 ActionButton(
                     text = "Ver ajudas gravadas",
-                    iconId = R.drawable.saved_recordings_icon, // Replace with actual icon id
+                    iconId = R.drawable.saved_recordings_icon,
                     onButtonClick = {
                         activity?.navigateToRecordedHelpsActivity()
                     }
@@ -102,7 +93,7 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
 
         Column(
             modifier = Modifier
-                .weight(2f) // This Column will take the remaining space
+                .weight(2f)
                 .padding(16.dp)
         ) {
             Text(
@@ -115,15 +106,12 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                 modifier = Modifier.padding(horizontal = 0.dp, vertical = 8.dp)
             )
 
-            // List of recent users inside a LazyColumn
             LazyColumn(
                 modifier = Modifier
-                    .weight(1f) // Take up all available space
+                    .weight(1f)
             ) {
-                // Replace this list with your actual data source
                 val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
                 items(recentUsers) { name ->
-                    // this onNavigate is not working
                     RecentUser(name = name, onButtonClick = { onNavigate(1) })
                 }
             }
@@ -132,7 +120,7 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24,
-            modifier = Modifier.align(Alignment.CenterHorizontally) // Align this to the bottom of the Column
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }
@@ -141,7 +129,6 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
 @Composable
 fun PreviewHelpSeekerHomeScreen() {
     AndroidToolsetTheme {
-        // Provide a no-op lambda for the preview
         HelpSeekerScreen(onNavigate = {})
     }
 }

@@ -29,27 +29,27 @@ fun RecentUser(name: String, onButtonClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp),
-        shape = RoundedCornerShape(16.dp), // Adjust as needed to match design
+        shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1))
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp), // Padding from the start (left side)
-            horizontalArrangement = Arrangement.Start, // Align text to the start (left)
-            verticalAlignment = Alignment.CenterVertically // Center text vertically
+                .padding(start = 2.dp),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = name,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = Color.White,
-                    fontWeight = FontWeight.Bold, // Make text bold
-                    fontSize = 22.sp // Set text size
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
                 )
             )
         }
     }
-    Spacer(modifier = Modifier.height(6.dp)) // Space between buttons
+    Spacer(modifier = Modifier.height(6.dp))
 }
 
 @Preview()
