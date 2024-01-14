@@ -30,13 +30,14 @@ class HelperHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { i ->
-                    when (i) {
-                        1 -> navigateToShareScreenActivity()
-                    }
-                }
+                HelperScreen { navigateToWaitPageActivity() }
             }
         }
+    }
+
+    private fun navigateToWaitPageActivity() {
+        val intent = Intent(this, WaitPageActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToShareScreenActivity() {
@@ -55,7 +56,7 @@ class HelperHomeActivity : ComponentActivity() {
 }
 
 @Composable
-fun HelperScreen(onNavigate: (Int) -> Unit) {
+fun HelperScreen(onNavigate: () -> Unit) {
     val context = LocalContext.current
     val activity = context as? HelperHomeActivity
 
@@ -73,7 +74,9 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     text = "Enviar convite para uma nova ajuda",
                     iconId = R.drawable.share_icon,
                     onButtonClick = {
-                        activity?.shareText("This is the text I want to share.")
+                        activity?.shareText("Estou precisando de uma ajuda. \n" +
+                                "Clique neste link para entrar em uma chamada comigo: XXXXX")
+                        onNavigate()
                     }
                 )
             }
@@ -119,7 +122,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     "Roberto Rocha"
                 )
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+                    RecentUser(name = name, onButtonClick = { onNavigate() })
                 }
             }
         }
@@ -127,7 +130,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24,
-            modifier = Modifier.align(Alignment.CenterHorizontally) // Align this to the bottom of the Column
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }

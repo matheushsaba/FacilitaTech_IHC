@@ -22,15 +22,16 @@ class ConfirmRecordingActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                ConfirmRecordingScreen( {navigateToVideoCall()}, "Você deseja gravar a chamada?")
+                ConfirmRecordingScreen( {navigateToShareScreenActivity()}, "Você deseja gravar a chamada?")
             }
         }
     }
 
-    private fun navigateToVideoCall() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+    private fun navigateToShareScreenActivity() {
+        val intent = Intent(this, SharingScreen::class.java)
         startActivity(intent)
     }
+    
 }
 
 @Composable

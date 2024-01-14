@@ -30,17 +30,13 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelpSeekerScreen { i ->
-                    when (i) {
-                        1 -> navigateToWaitPageActivity()
-                    }
-                }
+                HelpSeekerScreen { navigateToConfirmRecordingActivity() }
             }
         }
     }
 
-    private fun navigateToWaitPageActivity() {
-        val intent = Intent(this, WaitPageActivity::class.java)
+    private fun navigateToConfirmRecordingActivity() {
+        val intent = Intent(this, ConfirmRecordingActivity::class.java)
         startActivity(intent)
     }
 
@@ -60,7 +56,7 @@ class HelpSeekerHomeActivity : ComponentActivity() {
 }
 
 @Composable
-fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
+fun HelpSeekerScreen(onNavigate: () -> Unit) {
     val context = LocalContext.current
     val activity = context as? HelpSeekerHomeActivity
 
@@ -78,7 +74,9 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
                     text = "Enviar convite para uma nova ajuda",
                     iconId = R.drawable.share_icon,
                     onButtonClick = {
-                        activity?.shareText("This is the text I want to share.")
+                        activity?.shareText("Estou precisando de uma ajuda. \n" +
+                                "Clique neste link para entrar em uma chamada comigo: XXXXX")
+                        onNavigate()
                     }
                 )
                 ActionButton(
@@ -112,7 +110,7 @@ fun HelpSeekerScreen(onNavigate: (Int) -> Unit) {
             ) {
                 val recentUsers = listOf("Mateus Oliveira", "Ana Clara Souza", "Rafael Lima", "Beatriz Santos", "Thiago Silva")
                 items(recentUsers) { name ->
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+                    RecentUser(name = name, onButtonClick = { onNavigate() })
                 }
             }
         }
