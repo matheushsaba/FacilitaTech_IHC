@@ -73,7 +73,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
             ) {
                 // Conditionally add ActionButtons based on your logic
                 ActionButton(
-                    text = "Enviar link para uma nova ajuda",
+                    text = "Enviar convite para uma nova ajuda",
                     iconId = R.drawable.send_message_icon, // Replace with actual icon id
                     onButtonClick = {
                         activity?.shareText("This is the text I want to share.")
