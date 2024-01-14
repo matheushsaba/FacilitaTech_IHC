@@ -22,13 +22,13 @@ class NameRecordingActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                NameRecordingScreen( {navigateToVideoCall()}, "Você deseja gravar a chamada?")
+                NameRecordingScreen( {navigateToRecordedHelps()}, "Você deseja gravar a chamada?")
             }
         }
     }
 
-    private fun navigateToVideoCall() {
-        val intent = Intent(this, TouchValueActivity::class.java)
+    private fun navigateToRecordedHelps() {
+        val intent = Intent(this, RecordedHelpsActivity::class.java)
         startActivity(intent)
     }
 }
