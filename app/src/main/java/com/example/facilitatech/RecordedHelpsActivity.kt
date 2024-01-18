@@ -67,7 +67,7 @@ fun RecordingsScreen() {
             Text(
                 text = "Gravações:",
                 style = MaterialTheme.typography.titleLarge.copy(
-                    color = Color.Black,
+                    color = Color(0xff333333),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),

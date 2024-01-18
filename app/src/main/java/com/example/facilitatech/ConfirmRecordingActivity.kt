@@ -22,27 +22,39 @@ class ConfirmRecordingActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                ConfirmRecordingScreen( {navigateToShareScreenActivity()}, "Você deseja gravar a chamada?")
+                ConfirmRecordingScreen(
+                    onConfirm = { navigateToNameRecordingActivity() },
+                    onCancel = { navigateToHelpSeekerHomeActivity() },
+                    "Você deseja gravar a chamada?")
             }
         }
     }
 
-    private fun navigateToShareScreenActivity() {
-        val intent = Intent(this, SharingScreen::class.java)
+    private fun navigateToNameRecordingActivity() {
+        val intent = Intent(this, NameRecordingActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToHelpSeekerHomeActivity() {
+        val intent = Intent(this, HelpSeekerHomeActivity::class.java)
         startActivity(intent)
     }
     
 }
 
 @Composable
-fun ConfirmRecordingScreen(confirmRecording: () -> Unit, text: String) {
+fun ConfirmRecordingScreen(onConfirm: () -> Unit, onCancel: () -> Unit, text: String) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            PromptUserWindow( {confirmRecording()}, "Você deseja gravar a chamada?")
+            PromptUserWindow(
+                onConfirm = { onConfirm() },
+                onDismiss = { onCancel() },
+                text = "Você deseja gravar a chamada?"
+            )
         }
 
         BottomRibbon(
@@ -59,6 +71,9 @@ fun ConfirmRecordingScreen(confirmRecording: () -> Unit, text: String) {
 @Composable
 fun PreviewConfirmRecordingScreen() {
     AndroidToolsetTheme {
-        ConfirmRecordingScreen({}, "Você deseja gravar a chamada?")
+        ConfirmRecordingScreen(
+            onConfirm = { },
+            onCancel = { },
+            "Você deseja gravar a chamada?")
     }
 }

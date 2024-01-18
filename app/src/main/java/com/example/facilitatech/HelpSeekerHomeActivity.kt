@@ -30,13 +30,13 @@ class HelpSeekerHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelpSeekerScreen { navigateToConfirmRecordingActivity() }
+                HelpSeekerScreen { navigateToWaitPageActivity() }
             }
         }
     }
 
-    private fun navigateToConfirmRecordingActivity() {
-        val intent = Intent(this, ConfirmRecordingActivity::class.java)
+    private fun navigateToWaitPageActivity() {
+        val intent = Intent(this, HelpSeekerWaitPageActivity::class.java)
         startActivity(intent)
     }
 
@@ -97,7 +97,7 @@ fun HelpSeekerScreen(onNavigate: () -> Unit) {
             Text(
                 text = "Recentes:",
                 style = MaterialTheme.typography.titleLarge.copy(
-                    color = Color.Black,
+                    color = Color(0xff333333),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),

@@ -39,7 +39,7 @@ fun ToolsColumn(onExitCallClick: () -> Unit) {
             .clip(RoundedCornerShape(12.dp)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        IconButton(onClick = { onExitCallClick }) {
+        IconButton(onClick = { onExitCallClick() }) {
             Icon(
                 painter = painterResource(id = R.drawable.baseline_cancel_24),
                 contentDescription = "Sair da chamada",

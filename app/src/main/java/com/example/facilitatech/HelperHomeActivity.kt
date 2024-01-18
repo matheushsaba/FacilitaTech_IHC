@@ -36,12 +36,7 @@ class HelperHomeActivity : ComponentActivity() {
     }
 
     private fun navigateToWaitPageActivity() {
-        val intent = Intent(this, WaitPageActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToShareScreenActivity() {
-        val intent = Intent(this, SharingScreen::class.java)
+        val intent = Intent(this, HelperWaitPageActivity::class.java)
         startActivity(intent)
     }
 
@@ -90,7 +85,7 @@ fun HelperScreen(onNavigate: () -> Unit) {
             Text(
                 text = "Recentes:",
                 style = MaterialTheme.typography.titleLarge.copy(
-                    color = Color.Black,
+                    color = Color(0xff333333),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),

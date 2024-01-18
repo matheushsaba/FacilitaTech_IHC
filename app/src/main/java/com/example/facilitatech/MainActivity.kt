@@ -58,13 +58,13 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             TextField(
                 value = username,
                 onValueChange = { username = it },
-                label = { Text("Username") }
+                label = { Text("Nome de usuário") }
             )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text("Password") },
+                label = { Text("Senha") },
                 visualTransformation = PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(16.dp))
