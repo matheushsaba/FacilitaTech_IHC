@@ -36,9 +36,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun navigateToNextScreen() {
-        // Navigate to the next screen. Replace `NextActivity::class.java` with the actual class
         val intent = Intent(this, SelectUserActivity::class.java)
-//        val intent = Intent(this, VideoPlayerActivity::class.java)
         startActivity(intent)
     }
 }
@@ -53,20 +51,20 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .align(Alignment.Center), // This aligns the Column to the center of the Box
+                .align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             TextField(
                 value = username,
                 onValueChange = { username = it },
-                label = { Text("Username") }
+                label = { Text("Nome de usuário") }
             )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text("Password") },
+                label = { Text("Senha") },
                 visualTransformation = PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -76,7 +74,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                 Button(
                     onClick = {
                         isLoading = true
-                        // Simulate a delay for loading
                         Handler(Looper.getMainLooper()).postDelayed({
                             isLoading = false
                             onLoginSuccess()
@@ -95,7 +92,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
 
         BottomRibbon(
             text = "HelpingHand",
-            iconId = R.drawable.baseline_handshake_24, // Replace with your actual icon resource ID
+            iconId = R.drawable.baseline_handshake_24,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
     }

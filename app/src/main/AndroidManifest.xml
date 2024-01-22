@@ -28,9 +28,10 @@
         <activity android:name=".VideoPlayerActivity"/>
         <activity android:name=".ConfirmRecordingActivity"/>
         <activity android:name=".NameRecordingActivity"/>
-        <activity android:name=".TouchValueActivity"/>
-        <activity android:name=".SharingScreen" />
-        <activity android:name=".WaitPageActivity" />
+        <activity android:name=".HelpSeekerSharingScreen"/>
+        <activity android:name=".HelperSharingScreen" />
+        <activity android:name=".HelperWaitPageActivity" />
+        <activity android:name=".HelpSeekerWaitPageActivity" />
     </application>
 
 </manifest>

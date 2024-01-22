@@ -61,32 +61,25 @@ fun RecordingsScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
-                .weight(2f) // This Column will take the remaining space
+                .weight(2f)
                 .padding(16.dp)
         ) {
             Text(
                 text = "Gravações:",
                 style = MaterialTheme.typography.titleLarge.copy(
-                    color = Color.Black,
+                    color = Color(0xff333333),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),
                 modifier = Modifier.padding(horizontal = 0.dp, vertical = 8.dp)
             )
 
-            // Example data, replace with your actual video data
             val recordings = listOf(
-//                RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
-//                RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.drawable.send_message_icon),
-//                RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.drawable.send_message_icon),
-//                RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon),
-//                RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.drawable.send_message_icon)
-
-                    RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video),
-                    RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.raw.instagram_video),
-                    RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.raw.instagram_video),
-                    RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.raw.instagram_video),
-                    RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.raw.instagram_video)
+                    RecordingInfo("Pesquisar no Instagram", "Beatriz Santos", "08/12/2023", R.raw.instagram_video, R.drawable.instagram_image),
+                    RecordingInfo("Chamar Uber", "Mateus Oliveira", "02/11/2023", R.raw.uber_video, R.drawable.uber_image),
+                    RecordingInfo("Ver vídeo no Youtube", "Mateus Oliveira", "01/11/2023", R.raw.youtube_video, R.drawable.youtube_image),
+                    RecordingInfo("Pagar boleto", "Beatriz Santos", "13/04/2023", R.raw.boleto_video, R.drawable.boleto_image),
+                    RecordingInfo("Ver filme na Netflix", "Beatriz Santos", "13/04/2023", R.raw.netflix_video, R.drawable.netflix_image)
                         )
 
             LazyColumn {
@@ -94,7 +87,6 @@ fun RecordingsScreen() {
                     RecordingButton(
                         recordingInfo = recordingInfo,
                         onButtonClick = { info ->
-                            // Start the VideoPlayerActivity and pass the video resource ID
                             val intent = Intent(context, VideoPlayerActivity::class.java).apply {
                                 putExtra("VIDEO_RESOURCE_ID", info.videoResourceId)
                             }
@@ -109,7 +101,7 @@ fun RecordingsScreen() {
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24,
-            modifier = Modifier.align(Alignment.CenterHorizontally) // Align this to the bottom of the Column
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 

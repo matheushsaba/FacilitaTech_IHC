@@ -72,17 +72,17 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
             verticalArrangement = Arrangement.Center
         ) {
             User(
-                iconId = R.drawable.teacher_2_, // Replace with your actual icon drawable resource
+                iconId = R.drawable.teacher_2_,
                 buttonText = "Sou um ajudante",
-                onButtonClick = { onNavigate(1) } // For "Helper" button
+                onButtonClick = { onNavigate(1) }
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
             User(
-                iconId = R.drawable.why_quest, // Replace with your actual icon drawable resource
+                iconId = R.drawable.why_quest,
                 buttonText = "Preciso de ajuda",
-                onButtonClick = { onNavigate(2) } // For "Help Seeker" button
+                onButtonClick = { onNavigate(2) }
             )
         }
 
@@ -98,9 +98,9 @@ fun UserScreen(onNavigate: (Int) -> Unit) {
 
 @Composable
 fun User(
-    iconId: Int,  // Icon resource ID parameter
-    buttonText: String,  // Button text parameter
-    onButtonClick: () -> Unit  // Click handler for the button
+    iconId: Int,
+    buttonText: String,
+    onButtonClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -109,7 +109,6 @@ fun User(
         Surface(
             modifier = Modifier.size(309.dp, 199.dp),
             shape = RoundedCornerShape(4.dp),
-            // Color and other Surface properties as required
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -121,13 +120,12 @@ fun User(
                     shape = CircleShape,
                     color = Color(0xFF7493A1)
                 ) {
-                    // Place the Image composable here to display the icon
                     Image(
                         painter = painterResource(id = iconId),
                         contentDescription = "Icon",
                         modifier = Modifier
                             .size(100.dp)
-                            , // Center the image within the Surface
+                            ,
                         contentScale = ContentScale.Crop
                     )
                 }
@@ -140,12 +138,11 @@ fun User(
                     Button(
                         onClick = onButtonClick,
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF7493A1), // Background color of the button
-                            contentColor = Color.White // Color of the text and icons
+                            containerColor = Color(0xFF7493A1),
+                            contentColor = Color.White
                         ),
-                        shape = RoundedCornerShape(5.dp) // More boxed shape
+                        shape = RoundedCornerShape(5.dp)
                     ) {
-                        // Use the buttonText parameter for the Button's text
                         Text(
                             text = buttonText,
                             style = MaterialTheme.typography.headlineMedium.copy(

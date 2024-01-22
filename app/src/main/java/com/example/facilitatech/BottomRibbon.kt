@@ -25,11 +25,10 @@ import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 fun BottomRibbon(
     text: String,
     iconId: Int,
-    modifier: Modifier = Modifier, // Accept the modifier parameter
+    modifier: Modifier = Modifier,
     backgroundColor: Color = Color(0xFF7493A1),
     contentColor: Color = Color.White
 ) {
-    // Apply the passed modifier to the outermost Box
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -47,8 +46,8 @@ fun BottomRibbon(
                 modifier = Modifier.padding(end = 8.dp),
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = Color.White,
-                    fontWeight = FontWeight.Light, // Make text bold
-                    fontSize = 22.sp // Set text size
+                    fontWeight = FontWeight.Light,
+                    fontSize = 22.sp
                 )
             )
             Icon(

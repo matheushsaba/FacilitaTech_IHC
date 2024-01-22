@@ -33,8 +33,8 @@ import com.example.facilitatech.ui.theme.AndroidToolsetTheme
 
 
 @Composable
-fun PromptUserWindow(onButtonClick: () -> Unit, text: String) {
-    Box(contentAlignment = Alignment.Center) { // Box used to center the content
+fun PromptUserWindow(onConfirm: () -> Unit, onDismiss: () -> Unit, text: String) {
+    Box(contentAlignment = Alignment.Center) {
         Surface(
             modifier = Modifier.padding(32.dp),
             shadowElevation = 4.dp,
@@ -49,20 +49,20 @@ fun PromptUserWindow(onButtonClick: () -> Unit, text: String) {
                 Text(
                     text = text,
                     style = MaterialTheme.typography.titleLarge.copy(
-                        color = Color.Black,
+                        color = Color(0xff333333),
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp
                     ),
-                    textAlign = TextAlign.Center // This will align the text within the text composable itself
+                    textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Row {
                     Button(
-                        onClick = { onButtonClick() },
+                        onClick = onConfirm,
                         modifier = Modifier
                             .width(110.dp)
                             .height(50.dp),
-                        shape = RoundedCornerShape(12.dp), // Adjust as needed to match design
+                        shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1)
                         )
                     ) {
@@ -77,11 +77,11 @@ fun PromptUserWindow(onButtonClick: () -> Unit, text: String) {
                     }
                     Spacer(modifier = Modifier.width(48.dp))
                     Button(
-                        onClick = { onButtonClick() },
+                        onClick = onDismiss,
                         modifier = Modifier
                             .width(110.dp)
                             .height(50.dp),
-                        shape = RoundedCornerShape(12.dp), // Adjust as needed to match design
+                        shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7493A1)
                         )
                     ) {
@@ -104,6 +104,6 @@ fun PromptUserWindow(onButtonClick: () -> Unit, text: String) {
 @Composable
 fun PreviewPromptUserWindowScreen() {
     AndroidToolsetTheme {
-        PromptUserWindow({}, "Você deseja gravar a chamada?")
+        PromptUserWindow(onConfirm = {}, onDismiss = {}, text = "Você deseja gravar a chamada?")
     }
 }

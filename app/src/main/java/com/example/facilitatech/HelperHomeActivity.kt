@@ -30,19 +30,13 @@ class HelperHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidToolsetTheme {
-                HelperScreen { i ->
-                    when (i) {
-                        1 -> navigateToShareScreenActivity()
-                    }
-                }
+                HelperScreen { navigateToWaitPageActivity() }
             }
         }
     }
 
-    // correct would be navigate to waitPage, and then to shareScreen,
-    // knowing who is the helper and who is the seeker
-    private fun navigateToShareScreenActivity() {
-        val intent = Intent(this, SharingScreen::class.java)
+    private fun navigateToWaitPageActivity() {
+        val intent = Intent(this, HelperWaitPageActivity::class.java)
         startActivity(intent)
     }
 
@@ -57,26 +51,27 @@ class HelperHomeActivity : ComponentActivity() {
 }
 
 @Composable
-fun HelperScreen(onNavigate: (Int) -> Unit) {
+fun HelperScreen(onNavigate: () -> Unit) {
     val context = LocalContext.current
-    val activity = context as? HelperHomeActivity  // Cast context to your activity
+    val activity = context as? HelperHomeActivity
 
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .weight(1f) // This Box will take up the space available minus the space the bottom part takes
+                .weight(1f)
                 .padding(16.dp)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Conditionally add ActionButtons based on your logic
                 ActionButton(
                     text = "Enviar convite para uma nova ajuda",
-                    iconId = R.drawable.send_message_icon, // Replace with actual icon id
+                    iconId = R.drawable.share_icon,
                     onButtonClick = {
-                        activity?.shareText("This is the text I want to share.")
+                        activity?.shareText("Estou precisando de uma ajuda. \n" +
+                                "Clique neste link para entrar em uma chamada comigo: XXXXX")
+                        onNavigate()
                     }
                 )
             }
@@ -84,25 +79,23 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
 
         Column(
             modifier = Modifier
-                .weight(2f) // This Column will take the remaining space
+                .weight(2f)
                 .padding(16.dp)
         ) {
             Text(
                 text = "Recentes:",
                 style = MaterialTheme.typography.titleLarge.copy(
-                    color = Color.Black,
+                    color = Color(0xff333333),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),
                 modifier = Modifier.padding(horizontal = 0.dp, vertical = 8.dp)
             )
 
-            // List of recent users inside a LazyColumn
             LazyColumn(
                 modifier = Modifier
-                    .weight(1f) // Take up all available space
+                    .weight(1f)
             ) {
-                // Replace this list with your actual data source
                 val recentUsers = listOf(
                     "Analice Ferreira",
                     "Márcio Espíndola",
@@ -124,8 +117,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
                     "Roberto Rocha"
                 )
                 items(recentUsers) { name ->
-                    // clean this
-                    RecentUser(name = name, onButtonClick = { onNavigate(1) })
+                    RecentUser(name = name, onButtonClick = { onNavigate() })
                 }
             }
         }
@@ -133,7 +125,7 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
         BottomRibbon(
             text = "HelpingHand",
             iconId = R.drawable.baseline_handshake_24,
-            modifier = Modifier.align(Alignment.CenterHorizontally) // Align this to the bottom of the Column
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }
@@ -142,7 +134,6 @@ fun HelperScreen(onNavigate: (Int) -> Unit) {
 @Composable
 fun PreviewHelperHomeScreen() {
     AndroidToolsetTheme {
-        // Provide a no-op lambda for the preview
         HelperScreen(onNavigate = {})
     }
 }

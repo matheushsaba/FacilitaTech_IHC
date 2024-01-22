@@ -40,9 +40,9 @@ fun ActionButton(text: String, iconId: Int, onButtonClick: () -> Unit) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp), // Apply padding to the row instead of the icon and text
+                .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start // This aligns the contents to the left
+            horizontalArrangement = Arrangement.Start
         ) {
             Icon(
                 painter = painterResource(id = iconId),
@@ -60,13 +60,13 @@ fun ActionButton(text: String, iconId: Int, onButtonClick: () -> Unit) {
             )
         }
     }
-    Spacer(modifier = Modifier.height(8.dp)) // Space between buttons
+    Spacer(modifier = Modifier.height(8.dp))
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewActionButton() {
     AndroidToolsetTheme {
-        ActionButton(text = "Enviar link para uma nova ajuda", iconId = R.drawable.send_message_icon, onButtonClick = { })
+        ActionButton(text = "Enviar link para uma nova ajuda", iconId = R.drawable.share_icon, onButtonClick = { })
     }
 }
