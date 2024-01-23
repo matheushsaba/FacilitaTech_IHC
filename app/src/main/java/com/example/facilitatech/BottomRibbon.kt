@@ -58,7 +58,6 @@ fun BottomRibbon(
         }
     }
 }
-
 @Preview()
 @Composable
 fun PreviewLoginScreen() {

@@ -4,10 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.facilitatech.components.PromptUserWindow
@@ -37,6 +40,14 @@ fun HelperSharingScreenContent(onNavigate: () -> Unit) {
     var showExitDialog by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
+        // Background image
+        Image(
+            painter = painterResource(id = R.drawable.image_bill), // Replace with your actual image resource ID
+            contentDescription = null, // Background images typically do not need a content description
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop // Adjust the scaling as needed
+        )
+
         Column {
             TopBar()
             Spacer(modifier = Modifier.height(16.dp))
