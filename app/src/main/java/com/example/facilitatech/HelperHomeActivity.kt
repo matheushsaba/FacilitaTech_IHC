@@ -12,6 +12,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +29,7 @@ import com.example.facilitatech.components.ActionButton
 import com.example.facilitatech.components.BottomRibbon
 import com.example.facilitatech.components.RecentUser
 import com.example.facilitatech.ui.theme.AndroidToolsetTheme
+import kotlinx.coroutines.delay
 
 class HelperHomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +60,16 @@ class HelperHomeActivity : ComponentActivity() {
 fun HelperScreen(onNavigate: () -> Unit) {
     val context = LocalContext.current
     val activity = context as? HelperHomeActivity
+    var initiateSharing by remember { mutableStateOf(false) }
+
+    // Use LaunchedEffect to observe initiateSharing
+    LaunchedEffect(initiateSharing) {
+        if (initiateSharing) {
+            delay(4000) // Wait for 2 seconds
+            onNavigate() // Execute navigation
+            initiateSharing = false // Reset the state
+        }
+    }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -69,9 +85,9 @@ fun HelperScreen(onNavigate: () -> Unit) {
                     text = "Enviar convite para uma nova ajuda",
                     iconId = R.drawable.share_icon,
                     onButtonClick = {
-                        activity?.shareText("Estou precisando de uma ajuda. \n" +
+                        activity?.shareText("Gostaria de de uma ajuda? \n" +
                                 "Clique neste link para entrar em uma chamada comigo: XXXXX")
-                        onNavigate()
+                        initiateSharing = true // Trigger the LaunchedEffect
                     }
                 )
             }
